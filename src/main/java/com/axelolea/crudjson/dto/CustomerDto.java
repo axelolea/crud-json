@@ -2,18 +2,20 @@ package com.axelolea.crudjson.dto;
 
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 
 @Builder
 @Data
-public class Customer {
+public class CustomerDto {
 
     private long id;
-    @NotNull
+    @NotEmpty
+    @Size
     private String name;
-    @NotNull
+    @NotEmpty
     @Email
     private String email;
 
