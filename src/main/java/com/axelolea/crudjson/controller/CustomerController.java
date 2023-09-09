@@ -30,12 +30,14 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity<CustomerDto> getCustomerWithId (@PathVariable long id) {
         CustomerDto customer = customerService.getCustomerById(id);
-        return ResponseEntity.ok(null);
+        return ResponseEntity.ok(customer);
     }
 
     @PostMapping
     ResponseEntity<CustomerDto> createCustomer (@Valid @RequestBody CustomerDto customer) {
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+
+        CustomerDto newCustomer = customerService.saveCustomer(customer);
+        return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -43,14 +45,14 @@ public class CustomerController {
             @PathVariable long id,
             @RequestBody CustomerDto customer
     ) {
-        customer.setId(id);
-        return new ResponseEntity<>(customer, HttpStatus.ACCEPTED);
+        CustomerDto updateCustomer = customerService.updateCustomer(id, customer);
+        return new ResponseEntity<>(updateCustomer, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCustomerWithId(@PathVariable long id) {
-
+        customerService.deleteCustomer(id);
     }
 
 }
