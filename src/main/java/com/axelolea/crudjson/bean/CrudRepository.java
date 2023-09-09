@@ -1,14 +1,16 @@
 package com.axelolea.crudjson.bean;
 
+import com.axelolea.crudjson.dto.CustomerDto;
+
 import java.util.List;
 import java.util.Optional;
 
-public interface CrudRepository<T, U> {
+public interface CrudRepository {
 
-    T save (T i);
-    Optional<T> findById(U id);
-    List<T> findAll();
-    void delete (U id);
-    T update (U id, T t);
+    CustomerDto save (CustomerDto i);
+    Optional<CustomerDto> findById(Long id);
+    List<CustomerDto> findAll();
+    void delete (Long id);
+    CustomerDto update (Long id, CustomerDto t);
 
 }
