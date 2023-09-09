@@ -1,7 +1,7 @@
 package com.axelolea.crudjson.configuration;
 
 import com.axelolea.crudjson.bean.CustomerRepository;
-import com.axelolea.crudjson.bean.JsonDriver;
+import com.axelolea.crudjson.driver.JsonDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

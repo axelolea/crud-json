@@ -1,5 +1,6 @@
 package com.axelolea.crudjson.bean;
 
+import com.axelolea.crudjson.driver.JsonDriver;
 import com.axelolea.crudjson.dto.CustomerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,5 +1,6 @@
-package com.axelolea.crudjson.bean;
+package com.axelolea.crudjson.driver;
 
+import com.axelolea.crudjson.bean.CustomerJson;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import java.io.File;
