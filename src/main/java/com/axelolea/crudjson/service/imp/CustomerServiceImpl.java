@@ -1,7 +1,8 @@
 package com.axelolea.crudjson.service.imp;
 
-import com.axelolea.crudjson.bean.JsonRepo;
+import com.axelolea.crudjson.bean.CustomerRepository;
 import com.axelolea.crudjson.dto.CustomerDto;
+import com.axelolea.crudjson.exception.NotFoundCustomerException;
 import com.axelolea.crudjson.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,30 +13,31 @@ import java.util.List;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private final JsonRepo jsonRepo;
+    private final CustomerRepository customerRepo;
     @Autowired
-    public CustomerServiceImpl(JsonRepo jsonRepo) {
-        this.jsonRepo = jsonRepo;
+    public CustomerServiceImpl(CustomerRepository jsonRepo) {
+        this.customerRepo = jsonRepo;
     }
 
     @Override
     public List<CustomerDto> getAllCustomer() {
-        return null;
+        return customerRepo.findAll();
     }
 
     @Override
     public CustomerDto getCustomerById(long id) {
-        return null;
+        return customerRepo.findById(id)
+                .orElseThrow();
     }
 
     @Override
     public CustomerDto saveCustomer(CustomerDto customer) {
-        return null;
+        return customerRepo.save(customer);
     }
 
     @Override
-    public CustomerDto updateCustomer(CustomerDto customer) {
-        return null;
+    public CustomerDto updateCustomer(long id, CustomerDto customer) {
+        return customerRepo.update(id, customer);
     }
 
     @Override
