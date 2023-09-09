@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class CustomerRepository implements CrudRepository {
 
@@ -64,8 +63,32 @@ public class CustomerRepository implements CrudRepository {
     }
 
     @Override
-    public CustomerDto update(Long id, CustomerDto customerDto) {
-        return null;
+    public CustomerDto update(Long id, CustomerDto customer) {
+        CustomerJson data = driver.getJsonData();
+
+        CustomerDto newCustomer = CustomerDto.builder()
+                .id(id)
+                .name(customer.getName())
+                .email(customer.getEmail())
+                .build();
+
+        List<CustomerDto> customerList = data.getData().stream()
+                .map(obj -> {
+                    if(obj.getId() != id)
+                        return obj;
+                    return newCustomer;
+                })
+                .toList();
+
+        if(customerList.isEmpty()) {
+            data.setData(new ArrayList<>());
+        } else {
+            data.setData(customerList);
+        }
+
+        driver.setJsonData(data);
+
+        return newCustomer;
     }
 
 }
