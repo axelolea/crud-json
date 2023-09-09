@@ -7,6 +7,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,8 +35,14 @@ public class CustomerController {
     }
 
     @PostMapping
-    ResponseEntity<CustomerDto> createCustomer (@Valid @RequestBody CustomerDto customer) {
-
+    ResponseEntity<CustomerDto> createCustomer (
+            @Valid @RequestBody CustomerDto customer,
+            BindingResult result
+    ) {
+        if (result.hasErrors()) {
+            System.out.println(result.getAllErrors());
+            return new ResponseEntity<>(customer, HttpStatus.I_AM_A_TEAPOT);
+        }
         CustomerDto newCustomer = customerService.saveCustomer(customer);
         return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
     }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<CustomerDto> getAllCustomer ();
+    List<CustomerDto> getAllCustomer();
     CustomerDto getCustomerById(long id);
     CustomerDto saveCustomer(CustomerDto customer);
     CustomerDto updateCustomer(long id, CustomerDto customer);

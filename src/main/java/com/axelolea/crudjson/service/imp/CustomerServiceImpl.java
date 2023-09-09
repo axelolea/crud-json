@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDto getCustomerById(long id) {
         return customerRepo.findById(id)
-                .orElseThrow();
+                .orElseThrow(() -> new NotFoundCustomerException("Not found customer with Id: " + id));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(long id) {
-
+        customerRepo.delete(id);
     }
 
 }
