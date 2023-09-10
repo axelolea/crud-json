@@ -12,7 +12,7 @@ Con la condición de que el ID sea autoincrementable, es decir para los métodos
 Para construir y ejecutar la aplicación necesita:
 
 - [JDK 17](https://www.oracle.com/java/technologies/downloads/#java17)
-- [Maven 3](https://maven.apache.org)
+- [Maven 4](https://maven.apache.org)
 
 ## Correr la aplicación en local.
 
