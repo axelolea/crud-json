@@ -14,11 +14,12 @@ Para construir y ejecutar la aplicación necesita:
 - [JDK 17](https://www.oracle.com/java/technologies/downloads/#java17)
 - [Maven 3](https://maven.apache.org)
 
-## Running the application locally
+## Correr la aplicación en local.
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `de.codecentric.springbootsample.Application` class from your IDE.
+Hay varias formas de ejecutar una aplicación Spring Boot en su máquina local. Una forma es ejecutar el método `main` 
+en la clase `com.axelolea.crudjson.CrudJsonApplication` desde su IDE.
 
-Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+Alternativamente, puede usar él [complemento Spring Boot Maven](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) así:
 
 ```shell
 mvn package
